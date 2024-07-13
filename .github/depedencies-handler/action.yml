@@ -1,0 +1,17 @@
+name: "Setup env and Install Dependencies"
+description: "Setup Node.js & dependencies installation"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4.0.2
+      with:
+        node-version-file: ".node-version"
+        check-latest: true
+        cache: "npm"
+        cache-dependency-path: "**/package-lock.json"
+
+    - name: Install dependencies
+      shell: bash
+      run: npm install
