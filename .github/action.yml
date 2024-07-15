@@ -3,11 +3,9 @@ name: CI Pipeline for Verdant Sphere Landing Page
 on:
   pull_request:
     branches:
-      - dev
       - main
   push:
     branches:
-      - dev
       - main
 
 concurrency:
