@@ -12,6 +12,12 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test:
     name: Test Code
@@ -22,7 +28,7 @@ jobs:
       - name: Setup Dependencies
         uses: ./.github/workflows/dependencies-handler
 
-      - name: Run build command
+      - name: Run test command
         run: npm run test
 
   build:
